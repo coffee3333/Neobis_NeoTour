@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'neotour',
     'authentication',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -95,16 +98,6 @@ if not DEBUG:
             'PORT': config('DB_PORT'),
         }
     }
-    # DATABASES = {
-    #     "default": {
-    #         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-    #         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
-    #         "USER": os.environ.get("SQL_USER", "user"),
-    #         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-    #         "HOST": os.environ.get("SQL_HOST", "localhost"),
-    #         "PORT": os.environ.get("SQL_PORT", "5432"),
-    #     }
-    # }
 else:
     DATABASES = {
         'default': {
@@ -174,6 +167,10 @@ CLOUDINARY_STORAGE = {
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+CSRF_TRUSTED_ORIGINS = [config('TRUST_ORIGIN')]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # swagger settings
 SWAGGER_SETTINGS = {
