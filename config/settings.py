@@ -147,7 +147,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # Media files
-MEDIA_URL = 'neotour/media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 # Default primary key field type
@@ -202,3 +202,4 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(days=1),  # Пример: установите время жизни скользящего токена
     'SLIDING_TOKEN_REFRESH_GRACE_PERIOD': timedelta(days=7),  # Пример: установите период для обновления скользящего токена
 }
+

@@ -31,7 +31,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     password = models.CharField(max_length=255, null=True, blank=True)
-    photo = models.ImageField(upload_to="mobi_market", null=True)
+    photo = models.ImageField(upload_to='user_photos/', blank=True, null=True)
 
     USERNAME_FIELD = "email"
 
