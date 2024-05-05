@@ -135,6 +135,10 @@ GitHub.sublime-settings
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
-staticfiles/
-static/
-postgres/
+staticfiles
+static
+postgres
+bin
+include
+lib
+pyvenv.cfg
